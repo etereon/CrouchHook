@@ -11,15 +11,15 @@ bool state;
 LRESULT CALLBACK WndProcHooked(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
 	if (uMsg == WM_KEYUP) {
-		if (wParam == VK_F12 && *reinterpret_cast<byte*>(*reinterpret_cast<DWORD*>(0xB6F5F0) + 0x46F) == 128) {
+		if (wParam == VK_F12) {
 			state = !state;
 		}
 	}
 	return WndProcTrampoline(hWnd, uMsg, wParam, lParam);
 }
 
-bool __fastcall CrouchHooked(void* ecx, void* edx, void* ped) {
-	if (state && *reinterpret_cast<void**>(0xB6F5F0) == ped) return 1;
+bool __fastcall CrouchHooked(void* ecx, void* edx, byte* ped) {
+	if (state && *reinterpret_cast<byte**>(0xB6F5F0) == ped && ped[0x46F] == 128) return 1;
 	return CrouchTrampoline(ecx, ped);
 }
 
