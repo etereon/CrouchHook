@@ -6,7 +6,7 @@ typedef bool(__thiscall* CrouchFunction)(void*, void*);
 WNDPROC WndProcTrampoline;
 CrouchFunction CrouchTrampoline;
 
-bool state;
+bool state = false;
 
 LRESULT CALLBACK WndProcHooked(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
