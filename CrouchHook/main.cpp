@@ -11,7 +11,7 @@ bool state = false;
 LRESULT CALLBACK WndProcHooked(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
 	if (uMsg == WM_KEYUP) {
-		if (wParam == VK_F12) {
+		if (wParam == VK_F11) {
 			state = !state;
 		}
 	}
